@@ -1,20 +1,22 @@
 import AuthContext from "../../contexts/AuthContext";
 import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { BookDiv, MainStyle } from "../../assets/styles/styles";
+import { BookDiv, ButtonDiv, MainStyle } from "../../assets/styles/styles";
 import Header from "../../components/Header";
 import { FiLogIn as LoginIcon } from "react-icons/fi";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
 import SearchingData from "./SearchingData";
-import styled from "styled-components";
 import plusIcon from "../../assets/images/plus.png";
 import trashIcon from "../../assets/images/trash.png";
+import Cart from "../../components/Cart/Cart";
+import CartContext from "../../contexts/CartContext";
 
 const dolarToReal = 5.39;
 
 export default function Store() {
   const { user } = useContext(AuthContext);
+  const { displayCart } = useContext(CartContext);
   const [productsData, setProducts] = useState(null);
   const [productsSearch, setProdSearch] = useState("");
   const [cartItens, setCartItem] = useState([]);
@@ -53,7 +55,6 @@ export default function Store() {
   }, [user]);
 
   if (productsData === null) return <SearchingData />;
- console.log(cartItens)
   return (
     <>
       <Header>
@@ -70,6 +71,12 @@ export default function Store() {
           <button onClick={() => navigate("/profile")}>Perfil</button>
         )}
       </Header>
+      {displayCart && (
+        <Cart
+          cartItens={cartItens}
+          removeFromTheCart={removeFromTheCart}
+        />
+      )}
       <MainStyle>
         {productsData
           .filter((prod) => prod.ownerId !== user?.userId)
@@ -91,12 +98,20 @@ export default function Store() {
               </p>
               {isThisInTheCart(product._id) ? (
                 <ButtonDiv>
-                  <img src={trashIcon} alt="trash" onClick={() => removeFromTheCart(product._id)} />
+                  <img
+                    src={trashIcon}
+                    alt="trash"
+                    onClick={() => removeFromTheCart(product._id)}
+                  />
                   <p>Remover do carrinho</p>
                 </ButtonDiv>
               ) : (
                 <ButtonDiv>
-                  <img src={plusIcon} alt="add" onClick={() => addInTheCart(product)} />
+                  <img
+                    src={plusIcon}
+                    alt="add"
+                    onClick={() => addInTheCart(product)}
+                  />
                   <p>Adicionar ao carrinho</p>
                 </ButtonDiv>
               )}
@@ -106,18 +121,3 @@ export default function Store() {
     </>
   );
 }
-
-const ButtonDiv = styled.div`
-  position: absolute;
-  bottom: 0.5vw;
-  display: flex;
-  align-items: center;
-  gap: 0.8vw;
-  font-size: 1vw;
-
-  img{
-    width: 1.2vw;
-    height: 1.2vw;
-    cursor: pointer;
-  }
-`

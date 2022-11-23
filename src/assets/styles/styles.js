@@ -96,24 +96,39 @@ export const MainStyle = styled.main`
 `;
 
 export const BookDiv = styled.div`
-width: 15vw;
-height: 25vw;
-background-color: #ffffff;
-border-radius: 1.4vw;
-display: flex;
-flex-direction: column;
-gap: 0.8vw;
-justify-content: center;
-align-items: center;
-padding: 2vw 1vw 3vw 1vw;
-position: relative;
-font-size: 1.5vw;
+  width: 15vw;
+  height: 25vw;
+  background-color: #ffffff;
+  border-radius: 1.4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8vw;
+  justify-content: center;
+  align-items: center;
+  padding: 2vw 1vw 3vw 1vw;
+  position: relative;
+  font-size: 1.5vw;
 
-> img {
-  width: 10vw;
-}
+  > img {
+    width: 10vw;
+  }
 
-h1 {
-  text-align: center;
-}
+  h1 {
+    text-align: center;
+  }
+`;
+
+export const ButtonDiv = styled.div`
+  position: absolute;
+  bottom: 0.5vw;
+  display: flex;
+  align-items: center;
+  gap: 0.8vw;
+  font-size: 1vw;
+
+  img {
+    width: 1.2vw;
+    height: 1.2vw;
+    cursor: pointer;
+  }
 `;

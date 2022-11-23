@@ -7,11 +7,12 @@ import {
 import { useContext } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import CartContext from "../contexts/CartContext";
 
 export default function Header({ children }) {
   const { user, setAuth, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  
+  const { displayCart, setDisplayCart } = useContext(CartContext);
   function logout() {
     setAuth(false);
     setUser([]);
@@ -22,7 +23,7 @@ export default function Header({ children }) {
       <Logo>BookStore</Logo>
       {children}
       <button>
-        <CartIcon />
+        <CartIcon onClick={() => setDisplayCart(!displayCart)} />
       </button>
       {user.token && (
         <button onClick={logout}>
