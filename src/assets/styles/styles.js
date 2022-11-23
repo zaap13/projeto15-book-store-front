@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { logoFont } from "../../constants/fonts";
 
 export const Main = styled.main`
   height: 100vh;
@@ -16,7 +17,7 @@ export const Main = styled.main`
 `;
 
 export const Logo = styled.h1`
-  font-family: "Playball", cursive;
+  font-family: ${logoFont};
   font-weight: 700;
   font-size: 42px;
   line-height: 50px;

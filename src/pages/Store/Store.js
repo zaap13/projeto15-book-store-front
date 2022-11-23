@@ -1,16 +1,9 @@
 import AuthContext from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  Title,
-  Logo,
-  HeaderStyle,
-  MainStyle,
-} from "../../assets/styles/styles";
-import {
-  FiShoppingCart as CartIcon,
-  FiLogIn as LoginIcon,
-} from "react-icons/fi";
+import { Title, MainStyle } from "../../assets/styles/styles";
+import Header from "../../components/Header";
+import { FiLogIn as LoginIcon } from "react-icons/fi";
 
 export default function Store() {
   const { user } = useContext(AuthContext);
@@ -21,10 +14,7 @@ export default function Store() {
 
   return (
     <>
-      <HeaderStyle>
-        <Logo>BookStore</Logo>
-        <input placeholder="Pesquisar" />
-
+      <Header>
         {!user.token ? (
           <button onClick={() => navigate("/sign-in")}>
             <LoginIcon />
@@ -32,11 +22,7 @@ export default function Store() {
         ) : (
           <button onClick={() => navigate("/profile")}>Perfil</button>
         )}
-
-        <button>
-          <CartIcon />
-        </button>
-      </HeaderStyle>
+      </Header>
       <MainStyle>
         <button onClick={() => navigate("/sign-in")}>
           <Title>Token - {user.token}</Title>

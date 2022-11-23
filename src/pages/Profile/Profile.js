@@ -3,17 +3,10 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
-import {
-  Title,
-  Logo,
-  HeaderStyle,
-  MainStyle,
-} from "../../assets/styles/styles";
-import {
-  FiShoppingCart as CartIcon,
-  FiLogOut as LogoutIcon,
-} from "react-icons/fi";
+import { Title, MainStyle } from "../../assets/styles/styles";
+import { FiLogOut as LogoutIcon } from "react-icons/fi";
 import { BASE_URL } from "../../constants/url";
+import Header from "../../components/Header";
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
@@ -40,21 +33,14 @@ export default function Profile() {
   }, [user]);
   return (
     <>
-      <HeaderStyle>
-        <Logo>BookStore</Logo>
-        <input placeholder="Pesquisar" />
-
-        <button>
-          <CartIcon />
-        </button>
+      <Header>
         <button>
           <LogoutIcon />
         </button>
-      </HeaderStyle>
+      </Header>
       <MainStyle>
         <button onClick={() => navigate("/sign-in")}>
           <Title>{userInfo.name}</Title>
-          <Title>{products}</Title>
         </button>
       </MainStyle>
     </>

@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { mainFont } from "../../constants/fonts";
 
 const GlobalStyle = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -52,7 +53,7 @@ input {
 }
 * {
   box-sizing: border-box;
-  font-family: 'Raleway', sans-serif;
+  font-family: ${mainFont};
 }
 body {
     line-height: 1;
