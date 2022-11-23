@@ -76,7 +76,7 @@ export default function SignUp() {
           Cadastrar
         </button>
       </Form>
-      <Link to={`/`}>
+      <Link to={`/sign-in`}>
         <Text>Já tem uma conta? Faça login!</Text>
       </Link>
     </Main>

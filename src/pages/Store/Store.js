@@ -1,8 +1,16 @@
 import AuthContext from "../../contexts/AuthContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Title, Logo } from "../../assets/styles/styles";
-import styled from "styled-components";
+import {
+  Title,
+  Logo,
+  HeaderStyle,
+  MainStyle,
+} from "../../assets/styles/styles";
+import {
+  FiShoppingCart as CartIcon,
+  FiLogIn as LoginIcon,
+} from "react-icons/fi";
 
 export default function Store() {
   const { user } = useContext(AuthContext);
@@ -14,10 +22,20 @@ export default function Store() {
   return (
     <>
       <HeaderStyle>
-        <Logo>Logomarca</Logo>
+        <Logo>BookStore</Logo>
         <input placeholder="Pesquisar" />
-        <div>Login</div>
-        <div>Carrinho</div>
+
+        {!user.token ? (
+          <button onClick={() => navigate("/sign-in")}>
+            <LoginIcon />
+          </button>
+        ) : (
+          <button onClick={() => navigate("/profile")}>Perfil</button>
+        )}
+
+        <button>
+          <CartIcon />
+        </button>
       </HeaderStyle>
       <MainStyle>
         <button onClick={() => navigate("/sign-in")}>
@@ -28,36 +46,3 @@ export default function Store() {
     </>
   );
 }
-
-const HeaderStyle = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100vw;
-  height: 8vh;
-  position: fixed;
-  top: 0;
-  padding: 0 6vw;
-
-  div {
-    width: 12vw;
-    height: 4vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1.4vw;
-    background-color: gray;
-    color: white;
-  }
-`;
-
-const MainStyle = styled.main`
-  height: 92vh;
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 8vh;
-  overflow-y: auto;
-  justify-content: space-evenly;
-  //padding: 25px;
-  gap: 4vw;
-`;

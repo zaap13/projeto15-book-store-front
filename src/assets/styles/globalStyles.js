@@ -46,14 +46,17 @@ button {
   border: none;
   background: none;
 }
+input {
+	border: none;
+  background: none;
+}
 * {
   box-sizing: border-box;
-  // font-family: Definir;
-  
+  font-family: 'Raleway', sans-serif;
 }
 body {
     line-height: 1;
-	background-color: #000000;
+	background-color: #121214;
 }
 `;
 

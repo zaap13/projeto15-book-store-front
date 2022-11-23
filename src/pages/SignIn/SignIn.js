@@ -34,7 +34,7 @@ export default function SignIn() {
   }
   return (
     <Main>
-      <Logo>Store </Logo>
+      <Logo>BookStore </Logo>
       <Form onSubmit={handleSignIn}>
         <input
           disabled={loading}
