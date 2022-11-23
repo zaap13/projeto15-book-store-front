@@ -30,7 +30,7 @@ export default function SignUp() {
       })
       .then(() => {
         setLoading(false);
-        navigate("/");
+        navigate("/sign-in");
       })
       .catch((err) => {
         alert(err.response.data);

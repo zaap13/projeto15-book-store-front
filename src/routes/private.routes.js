@@ -6,9 +6,9 @@ import Store from "../pages/Store/Store";
 export default function PrivateRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<SignIn />} />
+      <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
-      <Route path="/store" element={<Store />} />
+      <Route path="/" element={<Store />} />
 
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

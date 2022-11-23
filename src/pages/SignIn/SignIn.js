@@ -24,7 +24,7 @@ export default function SignIn() {
       .then((res) => {
         setAuth(true);
         setUser(res.data);
-        navigate("/store");
+        navigate("/");
         setLoading(false);
       })
       .catch((err) => {
