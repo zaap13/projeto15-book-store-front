@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 import { Title, MainStyle } from "../../assets/styles/styles";
-import { FiLogOut as LogoutIcon } from "react-icons/fi";
 import { BASE_URL } from "../../constants/url";
 import Header from "../../components/Header";
 
@@ -33,11 +32,7 @@ export default function Profile() {
   }, [user]);
   return (
     <>
-      <Header>
-        <button>
-          <LogoutIcon />
-        </button>
-      </Header>
+      <Header></Header>
       <MainStyle>
         <button onClick={() => navigate("/sign-in")}>
           <Title>{userInfo.name}</Title>

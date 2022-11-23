@@ -48,6 +48,7 @@ export const Form = styled.form`
     font-size: 20px;
     line-height: 23px;
 
+    cursor: pointer;
     color: #ffffff;
   }
 `;
