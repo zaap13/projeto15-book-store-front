@@ -79,39 +79,6 @@ export const Title = styled.h2`
 
 // Store/Profile
 
-export const HeaderStyle = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100vw;
-  height: 12vh;
-  position: fixed;
-  top: 0;
-  padding: 0 6vw;
-  background-color: #060606;
-  button {
-    display: flex;
-    width: 10vw;
-    height: 6vh;
-    font-size: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1.4vw;
-    background-color: #018792;
-    color: #ffffff;
-    cursor: pointer;
-  }
-  input {
-    width: 260px;
-    height: 30px;
-
-    background: #c4c4cc;
-
-    border-radius: 5px;
-  }
-`;
-
 export const MainStyle = styled.main`
   height: 88vh;
   display: flex;
@@ -126,4 +93,27 @@ export const MainStyle = styled.main`
   //padding: 25px;
   gap: 4vw;
   background-color: #1b1b1b;
+`;
+
+export const BookDiv = styled.div`
+width: 15vw;
+height: 25vw;
+background-color: #ffffff;
+border-radius: 1.4vw;
+display: flex;
+flex-direction: column;
+gap: 0.8vw;
+justify-content: center;
+align-items: center;
+padding: 2vw 1vw 3vw 1vw;
+position: relative;
+font-size: 1.5vw;
+
+> img {
+  width: 10vw;
+}
+
+h1 {
+  text-align: center;
+}
 `;
