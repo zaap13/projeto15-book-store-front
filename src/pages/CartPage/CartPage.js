@@ -6,9 +6,14 @@ import Header from "../../components/Header";
 import { FiUser as UserIcon } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { Form } from "../../assets/styles/styles";
+import axios from "axios";
+import { BASE_URL } from "../../constants/url";
+import AuthContext from "../../contexts/AuthContext";
+import swal from "sweetalert";
 
 export default function CartPage() {
-  const { cartItens, removeFromTheCart } = useContext(CartContext);
+  const { cartItens, removeFromTheCart, setCartItem } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
   const [requestForm, setForm] = useState({ address: "", zipCode: "" });
   const [loading, setLoading] = useState(false);
 
@@ -18,12 +23,32 @@ export default function CartPage() {
     0
   );
 
-  function handleForm(e){
-    setForm({...requestForm, [e.target.name]: e.target.value});
+  function handleForm(e) {
+    setForm({ ...requestForm, [e.target.name]: e.target.value });
   }
-  function submitRequest(e){
+  function submitRequest(e) {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    };
+    const body = {
+      buyerId: user.userId,
+      ids: cartItens.map((prod) => prod._id),
+    };
     e.preventDefault();
     setLoading(true);
+    axios
+      .post(`${BASE_URL}/sales`, body, config)
+      .then((res) => {
+        swal({text: "Compra realizada com sucesso!"});
+        setLoading(false);
+        setCartItem([]);
+        navigate("/");
+      })
+      .catch((err) => {
+        alert(err.response.data);
+      });
   }
 
   return (
@@ -42,9 +67,7 @@ export default function CartPage() {
               <img src={item.image} alt="book cover" />
               {item.title}
             </BookInfoStyle>
-            <p>
-              {`$ ${(item.price).toFixed(2)}`.replace(".", ",")}
-            </p>
+            <p>{`$ ${item.price.toFixed(2)}`.replace(".", ",")}</p>
             <TrashIconStyle>
               <img
                 src={trashIcon}
@@ -102,7 +125,7 @@ const CartContainer = styled.main`
 
 const CartItemDiv = styled.div`
   background-color: #ffffff;
-  font-weight: ${(props) => props.bold === "true" ? "700" : "400"};
+  font-weight: ${(props) => (props.bold === "true" ? "700" : "400")};
   position: relative;
   width: 50vw;
   min-height: 12vh;
