@@ -3,7 +3,9 @@ import styled from "styled-components";
 import {
   FiShoppingCart as CartIcon,
   FiLogOut as LogoutIcon,
+  FiBookOpen as BookIcon,
 } from "react-icons/fi";
+import { BiBookAdd as Add } from "react-icons/bi";
 import { useContext } from "react";
 import AuthContext from "../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -20,15 +22,26 @@ export default function Header({ children }) {
   }
   return (
     <HeaderStyle>
-      <Logo>BookStore</Logo>
+      <Logo onClick={() => navigate("/")}>
+        <BookIcon /> BookStore
+      </Logo>
       {children}
-      <button>
-        <CartIcon onClick={() => setDisplayCart(!displayCart)} />
-      </button>
+
       {user.token && (
-        <button onClick={logout}>
-          <LogoutIcon />
-        </button>
+        <>
+          <button onClick={() => navigate("/sale")}>
+            <Add />
+            <span>Anunciar</span>
+          </button>
+          <button onClick={() => setDisplayCart(!displayCart)}>
+            <CartIcon />
+            <span>Carrinho</span>
+          </button>
+          <button onClick={logout}>
+            <LogoutIcon />
+            <span>Sair</span>
+          </button>
+        </>
       )}
     </HeaderStyle>
   );
@@ -44,10 +57,12 @@ const HeaderStyle = styled.header`
   top: 0;
   padding: 0 6vw;
   background-color: #060606;
+  gap: 1vw;
   button {
     display: flex;
+    flex-direction: column;
     width: 10vw;
-    height: 6vh;
+    height: 8vh;
     font-size: 18px;
     display: flex;
     justify-content: center;
@@ -57,6 +72,9 @@ const HeaderStyle = styled.header`
     color: #ffffff;
     cursor: pointer;
     z-index: 1;
+    span {
+      font-size: 2.4vh;
+    }
   }
   input {
     width: 260px;

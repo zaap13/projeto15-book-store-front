@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { logoFont } from "../../constants/fonts";
 
 export const Main = styled.main`
-  height: 100vh;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,6 +21,7 @@ export const Logo = styled.h1`
   font-weight: 700;
   font-size: 42px;
   line-height: 50px;
+  width: 40vw;
 
   color: #ffffff;
 `;
@@ -30,7 +31,7 @@ export const Form = styled.form`
   flex-direction: column;
   gap: 13px;
   input {
-    width: 326px;
+    width: 40vw;
     height: 58px;
 
     background: #c4c4cc;
@@ -38,7 +39,7 @@ export const Form = styled.form`
     border-radius: 5px;
   }
   button {
-    width: 326px;
+    width: 40vw;
     height: 46px;
 
     background: #018792;
@@ -55,9 +56,6 @@ export const Form = styled.form`
 
 export const Text = styled.p`
   height: 18px;
-  left: 92px;
-  top: 457px;
-
   font-weight: 700;
   font-size: 15px;
   line-height: 18px;
@@ -66,10 +64,6 @@ export const Text = styled.p`
 `;
 
 export const Title = styled.h2`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   font-weight: 700;
   font-size: 26px;
   line-height: 31px;
@@ -82,15 +76,12 @@ export const Title = styled.h2`
 export const MainStyle = styled.main`
   height: 88vh;
   display: flex;
-  flex-wrap: wrap;
   margin-top: 12vh;
   overflow-y: auto;
-  justify-content: space-evenly;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   padding: 4vh;
-  //padding: 25px;
+  flex-direction: column;
   gap: 4vw;
   background-color: #1b1b1b;
 `;
@@ -116,6 +107,20 @@ export const BookDiv = styled.div`
   h1 {
     text-align: center;
   }
+  :hover {
+    opacity: 0.6;
+  }
+`;
+
+export const BooksBox = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 90vw;
+  height: 100%;
+  gap: 15px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 15px;
 `;
 
 export const ButtonDiv = styled.div`

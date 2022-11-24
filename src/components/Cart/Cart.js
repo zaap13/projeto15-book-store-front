@@ -7,8 +7,8 @@ import CartContext from "../../contexts/CartContext";
 
 const dolarToReal = 5.39;
 
-export default function Cart({ cartItens, removeFromTheCart }) {
-  const { setDisplayCart } = useContext(CartContext);
+export default function Cart({ cartItens }) {
+  const { setDisplayCart, removeFromTheCart } = useContext(CartContext);
 
   return (
     <CartContainer>

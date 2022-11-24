@@ -57,6 +57,9 @@ export default function SignIn() {
       <Link to={`/sign-up`}>
         <Text>Primeira vez? Cadastre-se!</Text>
       </Link>
+      <Link to={`/`}>
+        <Text>Voltar para a Home</Text>
+      </Link>
     </Main>
   );
 }

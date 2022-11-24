@@ -1,16 +1,14 @@
 import AuthContext from "../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Book from "../../components/Book";
 
 import axios from "axios";
-import { Title, MainStyle } from "../../assets/styles/styles";
+import { Title, MainStyle, BooksBox, Text } from "../../assets/styles/styles";
 import { BASE_URL } from "../../constants/url";
 import Header from "../../components/Header";
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
-
-  const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState([]);
   const [products, setProducts] = useState([]);
 
@@ -24,7 +22,7 @@ export default function Profile() {
       .then((res) => {
         setUserInfo(res.data.user);
         setProducts(res.data.products);
-        console.log(res.data.user, res.data.products);
+        console.log(res.data.user, res.data.products, user.token);
       })
       .catch((err) => {
         alert(err.response.data);
@@ -34,9 +32,13 @@ export default function Profile() {
     <>
       <Header></Header>
       <MainStyle>
-        <button onClick={() => navigate("/sign-in")}>
-          <Title>{userInfo.name}</Title>
-        </button>
+        <Title>Olá, {userInfo.name}!</Title>
+        <Text>Seus anúncios:</Text>
+        <BooksBox>
+          {products.map((product) => (
+            <Book key={product._id} product={product} owner={true}></Book>
+          ))}
+        </BooksBox>
       </MainStyle>
     </>
   );
