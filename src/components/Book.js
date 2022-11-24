@@ -2,11 +2,13 @@ import { BookDiv, ButtonDiv } from "../assets/styles/styles";
 import plusIcon from "../assets/images/plus.png";
 import trashIcon from "../assets/images/trash.png";
 import CartContext from "../contexts/CartContext";
+import AuthContext from "../contexts/AuthContext";
 import { useContext } from "react";
 
 export default function Book({ product, owner }) {
   const dolarToReal = 5.39;
 
+  const { user } = useContext(AuthContext);
   const { isThisInTheCart, addInTheCart, removeFromTheCart } =
     useContext(CartContext);
 
@@ -30,7 +32,7 @@ export default function Book({ product, owner }) {
         </ButtonDiv>
       ) : (
         <ButtonDiv>
-          <img src={plusIcon} alt="add" onClick={() => addInTheCart(product)} />
+          <img src={plusIcon} alt="add" onClick={() => user.token && addInTheCart(product)} />
           <p>Adicionar ao carrinho</p>
         </ButtonDiv>
       )}

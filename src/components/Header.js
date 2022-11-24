@@ -33,7 +33,7 @@ export default function Header({ children }) {
             <Add />
             <span>Anunciar</span>
           </button>
-          <button onClick={() => setDisplayCart(!displayCart)}>
+          <button onClick={() => navigate("/cart")}>
             <CartIcon />
             <span>Carrinho</span>
           </button>
