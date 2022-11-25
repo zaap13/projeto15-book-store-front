@@ -4,9 +4,11 @@ import trashIcon from "../assets/images/trash.png";
 import CartContext from "../contexts/CartContext";
 import AuthContext from "../contexts/AuthContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Book({ product, owner }) {
   const dolarToReal = 5.39;
+  const navigate = useNavigate();
 
   const { user } = useContext(AuthContext);
   const { isThisInTheCart, addInTheCart, removeFromTheCart } =
@@ -14,12 +16,19 @@ export default function Book({ product, owner }) {
 
   return (
     <BookDiv>
-      <img src={product.image} alt="book cover" />
+      <img
+        src={product.image}
+        alt="book cover"
+        onClick={() => navigate(`product/${product._id}`)}
+      />
       <h1>{product.title}</h1>
       <p>
         {`R$ ${(product.price * dolarToReal).toFixed(2)}`.replace(".", ",")}
       </p>
-      {owner ? (
+
+      {!user.token ? (
+        <h2 onClick={() => navigate("/sign-in")}>faça login</h2>
+      ) : owner ? (
         <p>Editar / Deletar</p> //implementar
       ) : isThisInTheCart(product._id) ? (
         <ButtonDiv>
@@ -32,7 +41,11 @@ export default function Book({ product, owner }) {
         </ButtonDiv>
       ) : (
         <ButtonDiv>
-          <img src={plusIcon} alt="add" onClick={() => user.token && addInTheCart(product)} />
+          <img
+            src={plusIcon}
+            alt="add"
+            onClick={() => user.token && addInTheCart(product)}
+          />
           <p>Adicionar ao carrinho</p>
         </ButtonDiv>
       )}

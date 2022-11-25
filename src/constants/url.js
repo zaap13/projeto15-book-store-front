@@ -1,1 +1,1 @@
-export const BASE_URL = "https://projeto15-tbd-back.onrender.com";
+export const BASE_URL = "http://localhost:4040";

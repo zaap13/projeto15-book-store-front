@@ -40,7 +40,7 @@ export default function SignUp() {
 
   return (
     <Main>
-      <Logo>Store </Logo>
+      <Logo>BookStore</Logo>
 
       <Form onSubmit={handleSignUp}>
         <input

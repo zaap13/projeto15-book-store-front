@@ -4,7 +4,7 @@ import { BASE_URL } from "../../constants/url";
 import axios from "axios";
 import { Main, Form, Logo, Text } from "../../assets/styles/styles";
 import AuthContext from "../../contexts/AuthContext";
-
+import Header from "../../components/Header";
 export default function Sale() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -51,59 +51,62 @@ export default function Sale() {
   }
 
   return (
-    <Main>
-      <Logo>Crie seu anúncio: </Logo>
+    <>
+      <Header />
+      <Main>
+        <Logo>Crie seu anúncio: </Logo>
 
-      <Form onSubmit={handleSale}>
-        <input
-          disabled={loading}
-          type="text"
-          placeholder="Título"
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <input
-          disabled={loading}
-          type="text"
-          placeholder="URL da imagem"
-          onChange={(e) => setImage(e.target.value)}
-          required
-        />
-        <input
-          disabled={loading}
-          type="text"
-          placeholder="Preço"
-          onChange={(e) => setPrice(Number(e.target.value))}
-          required
-        />
-        <input
-          disabled={loading}
-          type="text"
-          placeholder="Descrição"
-          onChange={(e) => setDescription(e.target.value)}
-          required
-        />
-        <input
-          disabled={loading}
-          type="text"
-          placeholder="Autor"
-          onChange={(e) => setAuthor(e.target.value)}
-          required
-        />
-        <input
-          disabled={loading}
-          type="text"
-          placeholder="Gênero"
-          onChange={(e) => setGenre(e.target.value)}
-          required
-        />
-        <button disabled={loading} type="submit">
-          Anunciar
-        </button>
-      </Form>
-      <Link to={`/profile`}>
-        <Text>Voltar para o perfil</Text>
-      </Link>
-    </Main>
+        <Form onSubmit={handleSale}>
+          <input
+            disabled={loading}
+            type="text"
+            placeholder="Título"
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <input
+            disabled={loading}
+            type="text"
+            placeholder="URL da imagem"
+            onChange={(e) => setImage(e.target.value)}
+            required
+          />
+          <input
+            disabled={loading}
+            type="text"
+            placeholder="Preço"
+            onChange={(e) => setPrice(Number(e.target.value))}
+            required
+          />
+          <input
+            disabled={loading}
+            type="text"
+            placeholder="Descrição"
+            onChange={(e) => setDescription(e.target.value)}
+            required
+          />
+          <input
+            disabled={loading}
+            type="text"
+            placeholder="Autor"
+            onChange={(e) => setAuthor(e.target.value)}
+            required
+          />
+          <input
+            disabled={loading}
+            type="text"
+            placeholder="Gênero"
+            onChange={(e) => setGenre(e.target.value)}
+            required
+          />
+          <button disabled={loading} type="submit">
+            Anunciar
+          </button>
+        </Form>
+        <Link to={`/profile`}>
+          <Text>Voltar para o perfil</Text>
+        </Link>
+      </Main>
+    </>
   );
 }

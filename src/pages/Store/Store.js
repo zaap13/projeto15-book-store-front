@@ -29,6 +29,7 @@ export default function Store() {
       .get(`${BASE_URL}/products`, config)
       .then((res) => {
         setProducts(res.data);
+
       })
       .catch((err) => {
         alert(err.response.data);
@@ -47,11 +48,12 @@ export default function Store() {
         {!user.token ? (
           <button onClick={() => navigate("/sign-in")}>
             <LoginIcon />
+            <h4>Login</h4>
           </button>
         ) : (
           <button onClick={() => navigate("/profile")}>
             <UserIcon />
-            <span>Perfil</span>
+            <h4>Perfil</h4>
           </button>
         )}
       </Header>

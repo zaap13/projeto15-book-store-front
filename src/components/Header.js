@@ -14,7 +14,7 @@ import CartContext from "../contexts/CartContext";
 export default function Header({ children }) {
   const { user, setAuth, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { displayCart, setDisplayCart } = useContext(CartContext);
+  const { displayCart, setDisplayCart, cartItens } = useContext(CartContext);
   function logout() {
     setAuth(false);
     setUser([]);
@@ -23,7 +23,7 @@ export default function Header({ children }) {
   return (
     <HeaderStyle>
       <Logo onClick={() => navigate("/")}>
-        <BookIcon /> BookStore
+        <BookIcon /> <span>BookStore</span>
       </Logo>
       {children}
 
@@ -31,15 +31,16 @@ export default function Header({ children }) {
         <>
           <button onClick={() => navigate("/sale")}>
             <Add />
-            <span>Anunciar</span>
+            <h4>Anunciar</h4>
           </button>
           <button onClick={() => navigate("/cart")}>
             <CartIcon />
-            <span>Carrinho</span>
+            {cartItens.length > 0 && <div>{cartItens.length}</div>}
+            <h4>Carrinho</h4>
           </button>
           <button onClick={logout}>
             <LogoutIcon />
-            <span>Sair</span>
+            <h4>Sair</h4>
           </button>
         </>
       )}
@@ -58,9 +59,15 @@ const HeaderStyle = styled.header`
   padding: 0 6vw;
   background-color: #060606;
   gap: 1vw;
+  span {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
   button {
     display: flex;
     flex-direction: column;
+    position: relative;
     width: 10vw;
     height: 8vh;
     font-size: 18px;
@@ -72,8 +79,28 @@ const HeaderStyle = styled.header`
     color: #ffffff;
     cursor: pointer;
     z-index: 1;
-    span {
+    h4 {
       font-size: 2.4vh;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
+    div {
+      position: absolute;
+      height: 12px;
+      width: 12px;
+      padding-bottom: 3px;
+      padding-right: 1px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      text-align: center;
+      top: 18%;
+      right: 18%;
+      background-color: #ff8c00;
+      font-weight: 700;
     }
   }
   input {
@@ -83,5 +110,8 @@ const HeaderStyle = styled.header`
     background: #c4c4cc;
 
     border-radius: 5px;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
   }
 `;

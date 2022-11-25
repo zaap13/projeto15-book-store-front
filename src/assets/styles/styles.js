@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { logoFont } from "../../constants/fonts";
 
 export const Main = styled.main`
+  margin-top: 12vh;
 
   display: flex;
   flex-direction: column;
@@ -17,11 +18,13 @@ export const Main = styled.main`
 `;
 
 export const Logo = styled.h1`
+  display: flex;
   font-family: ${logoFont};
   font-weight: 700;
   font-size: 42px;
   line-height: 50px;
   width: 40vw;
+  gap: 15px;
 
   color: #ffffff;
 `;
@@ -102,6 +105,7 @@ export const BookDiv = styled.div`
   font-size: 1.5vw;
 
   > img {
+    cursor: pointer;
     width: 10vw;
   }
 
@@ -110,6 +114,13 @@ export const BookDiv = styled.div`
   }
   :hover {
     opacity: 0.6;
+  }
+  h2 {
+    background-color: #ff8c00;
+    color: #ffffff;
+    padding: 2px;
+    border-radius: 5px;
+    cursor: pointer;
   }
 `;
 
