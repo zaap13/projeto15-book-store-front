@@ -14,7 +14,7 @@ import CartContext from "../contexts/CartContext";
 export default function Header({ children }) {
   const { user, setAuth, setUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { displayCart, setDisplayCart, cartItens } = useContext(CartContext);
+  const { cartItens } = useContext(CartContext);
   function logout() {
     setAuth(false);
     setUser([]);
