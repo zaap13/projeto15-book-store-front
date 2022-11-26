@@ -3,7 +3,6 @@ import { createContext, useState } from "react";
 const CartContext = createContext();
 
 function CartProvider({ children }) {
-  const [displayCart, setDisplayCart] = useState(false);
   const [cartItens, setCartItem] = useState([]);
 
   function isThisInTheCart(productId) {
@@ -25,8 +24,6 @@ function CartProvider({ children }) {
   return (
     <CartContext.Provider
       value={{
-        displayCart,
-        setDisplayCart,
         cartItens,
         setCartItem,
         isThisInTheCart,

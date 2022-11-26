@@ -27,6 +27,7 @@ export const Logo = styled.h1`
   gap: 15px;
 
   color: #ffffff;
+  cursor: pointer;
 `;
 
 export const Form = styled.form`

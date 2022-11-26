@@ -29,7 +29,7 @@ export default function Book({ product, owner }) {
       {!user.token ? (
         <h2 onClick={() => navigate("/sign-in")}>faça login</h2>
       ) : owner ? (
-        <p>Editar / Deletar</p> //implementar
+        <></>
       ) : isThisInTheCart(product._id) ? (
         <ButtonDiv>
           <img

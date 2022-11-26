@@ -7,14 +7,11 @@ import { FiLogIn as LoginIcon } from "react-icons/fi";
 import axios from "axios";
 import { BASE_URL } from "../../constants/url";
 import SearchingData from "./SearchingData";
-import Cart from "../../components/Cart/Cart";
-import CartContext from "../../contexts/CartContext";
 import Book from "../../components/Book";
 import { FiUser as UserIcon } from "react-icons/fi";
 
 export default function Store() {
   const { user } = useContext(AuthContext);
-  const { displayCart, cartItens } = useContext(CartContext);
   const [productsData, setProducts] = useState(null);
   const [productsSearch, setProdSearch] = useState("");
   const navigate = useNavigate();
@@ -57,7 +54,7 @@ export default function Store() {
           </button>
         )}
       </Header>
-      {displayCart && <Cart cartItens={cartItens} />}
+      
       <MainStyle>
         <BooksBox>
           {productsData

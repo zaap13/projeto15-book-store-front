@@ -1,8 +1,6 @@
 import AuthContext from "../../contexts/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import Book from "../../components/Book";
-import Cart from "../../components/Cart/Cart";
-import CartContext from "../../contexts/CartContext";
 
 import axios from "axios";
 import { Title, MainStyle, BooksBox, Text } from "../../assets/styles/styles";
@@ -11,7 +9,6 @@ import Header from "../../components/Header";
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
-  const { displayCart, cartItens } = useContext(CartContext);
 
   const [userInfo, setUserInfo] = useState([]);
   const [products, setProducts] = useState([]);
@@ -35,7 +32,6 @@ export default function Profile() {
   return (
     <>
       <Header />
-      {displayCart && <Cart cartItens={cartItens} />}
       <MainStyle>
         <Title>Olá, {userInfo.name}!</Title>
         <Text>Seus anúncios:</Text>
